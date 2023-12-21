@@ -3,48 +3,52 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hbelle <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: hbelle <hbelle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/04 09:46:16 by hbelle            #+#    #+#              #
-#    Updated: 2023/12/04 09:47:14 by hbelle           ###   ########.fr        #
+#    Created: 2023/10/05 17:52:23 by hbelle            #+#    #+#              #
+#    Updated: 2023/12/21 19:35:27 by hbelle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	libftprintf.a
+NAME	=	push_swap
 
-SRCS	=	ft_putchar_fd.c \
-	ft_putstr_fd.c \
-	ft_putnbr_fd.c \
-	ft_putnbr_fd_unsigned.c \
-	ft_putnbr_fd_base_unsigned.c \
-	ft_printf.c \
-	ft_strlen.c \
-	ft_countdigits.c \
-	ft_countdigits_unsigned.c \
-	ft_countdigits_base_unsigned.c \
-	ft_printf_check.c 
-	
-OBJTS	=	${SRCS:.c=.o}
+SRCS	=	main.c \
+	srcs/parse/ft_check_input.c \
 
-CC	=	cc
+OBJ_DIR = .o
+OBJTS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
+LIBFT	=	utils/libft.a
+
 RM	=	rm -f
+HEADER = -I includes
+LIBS = -Lutils -lft
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
-.c.o:
-	${CC} ${CFLAGS} -I includes -c $< -o ${<:.c=.o}
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(@D)
+	cc $(CFLAGS) $(HEADER) -c  $< -o $@
+	@if test -s $*.c; then \
+			echo "\033[01m\033[35m Compiling $(DEBUG)\033[00m\
+			\033[36m$(SRCPATH)$*.c\033[032m  [OK]\033[00m";\
+			else \
+			echo "\033[01m\033[33m Compiling $(DEBUG)\033[00m\
+			\033[36m$(SRCPATH)$*.c\033[00m\  [Error]"; fi
 
-$(NAME): ${OBJTS}
-		ar rcs ${NAME} ${OBJTS}
+$(NAME): $(OBJTS) $(LIBFT)
+	cc -o $(NAME) $(OBJTS) $(LIBS) $(CFLAGS) $(HEADER)
+	@echo "\033[01m\033[32mCompilation done => ${NAME}\033[00m"
 
 all:	${NAME}
-
+	@$ cc -o $(NAME) $(OBJTS) $(LIBS) $(CFLAGS) $(HEADER)
 clean:
-	${RM} ${OBJTS}
-	
+	${RM} -r $(OBJ_DIR)
+	@echo "\033[01m\033[31mRemoving objects ...\033[00m"
+
 fclean:	clean
 	${RM} ${NAME}
+	@echo "\033[01m\033[31mRemoving exec : ${NAME} ...\033[00m"
 
-re:	fclean all
+re:	fclean $(LIBFT) all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

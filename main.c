@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.c                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbelle <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hbelle <hbelle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 10:53:05 by hbelle            #+#    #+#             */
-/*   Updated: 2023/12/04 15:59:24 by hbelle           ###   ########.fr       */
+/*   Updated: 2023/12/21 18:04:39 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_push_swap(int *a, int *b)
+#include "includes/ft_push_swap.h"
+
+
+/*int	ft_push_swap(int *a, int *b)
 {
 	int	i;
 	int	tmp;
 	int	*tmpp;
+	int	i;
+	int	i;
+	int	error;
+	int	error;
+	int	error;
+	int	error;
+	int	error;
 
 	tmp = 0;
-	i = 0 ;	
+	i = 0;
 	if ("sa")
 	{
 		tmp = a[0];
@@ -32,13 +42,13 @@ int	ft_push_swap(int *a, int *b)
 	}
 	else if ("ss")
 	{
-		sa && sb;
+		sa &&sb;
 	}
 	else if ("pa")
 	{
 		if (ft_check(b) != NULL)
 		{
-			tmpp  = a ;
+			tmpp = a;
 			a = malloc(sizeof(int *)* (ft_count_digit(a) + 1);
 			a = add_one(a, tmpp); // fonction pour transferer tmpp to a
 			a = ft_swap(a, b);	// fonction pour transferer le 1 de b to a
@@ -48,7 +58,7 @@ int	ft_push_swap(int *a, int *b)
 	{
 		if (ft_check(a) != NULL)
 		{
-			tmpp  = b ;
+			tmpp = b;
 			b = malloc(sizeof(int *)*(ft_count_digit(b) + 1);
 			b = add_one(b, tmpp);
 			b = ft_swap(b, a);
@@ -56,8 +66,6 @@ int	ft_push_swap(int *a, int *b)
 	}
 	else if ("ra")
 	{
-		int	i;
-	
 		num = count;
 		tmp = a[0];
 		while (!num)
@@ -67,12 +75,9 @@ int	ft_push_swap(int *a, int *b)
 			numm--;
 		}
 		a[count] = tmp;
-
-	}	
+	}
 	else if ("rb")
 	{
-		int	i;
-
 		i = 0;
 		num = count;
 		tmp = b[count];
@@ -85,3 +90,31 @@ int	ft_push_swap(int *a, int *b)
 		b[0] = tmp;
 	}
 	else if ("")
+}*/
+
+void	init_variables(t_swap *s)
+{
+	s->check_error = 0;
+}
+
+
+int	main(int ac, char **av)
+{
+	t_swap	s;
+
+	init_variables(&s);
+	if (ac > 1)
+	{
+		s.i = 1;
+		while (av[s.i])
+		{
+			s.check_error = ft_check_input(&s, av[s.i]);
+			if (s.check_error == 1)
+			{
+				return (ft_printf("Error\n"));
+			}
+			s.i++;
+		}
+	}
+	return (0);
+}
