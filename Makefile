@@ -6,24 +6,25 @@
 #    By: hbelle <hbelle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 17:52:23 by hbelle            #+#    #+#              #
-#    Updated: 2023/12/21 19:35:27 by hbelle           ###   ########.fr        #
+#    Updated: 2023/12/22 19:02:22 by hbelle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	push_swap
 
 SRCS	=	main.c \
-	srcs/parse/ft_check_input.c \
-
+	srcs/parse/check_input.c \
+	srcs/data/create_array.c \
+	
 OBJ_DIR = .o
 OBJTS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
-LIBFT	=	utils/libft.a
+LIBFT	=	libft/libft.a
 
 RM	=	rm -f
-HEADER = -I includes
-LIBS = -Lutils -lft
+HEADER =	-I includes
+LIBS =	-Llibft/ -lft
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(@D)
@@ -37,13 +38,17 @@ $(OBJ_DIR)/%.o: %.c
 
 $(NAME): $(OBJTS) $(LIBFT)
 	cc -o $(NAME) $(OBJTS) $(LIBS) $(CFLAGS) $(HEADER)
-	@echo "\033[01m\033[32mCompilation done => ${NAME}\033[00m"
+	@echo "\033[01m\033[4;33mCompilation done\033[00m\033[1;31m -->\033[00m\033[1;32m ${NAME}\033[00m"
+
+$(LIBFT):
+	@make -C libft/
 
 all:	${NAME}
-	@$ cc -o $(NAME) $(OBJTS) $(LIBS) $(CFLAGS) $(HEADER)
+
 clean:
 	${RM} -r $(OBJ_DIR)
 	@echo "\033[01m\033[31mRemoving objects ...\033[00m"
+	@make -C libft/ fclean
 
 fclean:	clean
 	${RM} ${NAME}
