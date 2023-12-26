@@ -6,40 +6,40 @@
 /*   By: hbelle <hbelle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:40:34 by hbelle            #+#    #+#             */
-/*   Updated: 2023/12/22 14:40:43 by hbelle           ###   ########.fr       */
+/*   Updated: 2023/12/26 14:43:24 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_push_swap.h"
 
-void	rule_ra(t_swap *s, int *a, int *b)
+void	rule_ra(t_swap *s)
 {
 	s->i = 0;
-	s->tmp = a[0];
-	while (s->i < ft_count(a))
+	s->tmp = s->a[0];
+	while (s->i < ft_count(s->a))
 	{
-		if (s->i + 1 != ft_count(a))
-			a[s->i] = a[s->i + 1];
+		if (s->i + 1 != ft_count(s->a))
+			s->a[s->i] = s->a[s->i + 1];
 		s->i++;
 	}
-	a[ft_count(a)] = s->tmp;
+	s->a[ft_count(s->a)] = s->tmp;
 }
 
-void	rule_rb(t_swap *s, int *a, int *b)
+void	rule_rb(t_swap *s)
 {
 	s->i = 0;
-	s->tmp = b[0];
-	while (s->i < ft_count(b))
+	s->tmp = s->b[0];
+	while (s->i < ft_count(s->b))
 	{
-		if (s->i + 1 != ft_count(b))
-			b[s->i] = b[s->i + 1];
+		if (s->i + 1 != ft_count(s->b))
+			s->b[s->i] = s->b[s->i + 1];
 		s->i++;
 	}
-	b[ft_count(b)] = s->tmp;
+	s->b[ft_count(s->b)] = s->tmp;
 }
 
-void	rule_rr(t_swap *s, int *a, int *b)
+void	rule_rr(t_swap *s)
 {
-	rule_rb(s, &a, &b);
-	rule_ra(s, &a, &b);
+	rule_rb(s);
+	rule_ra(s);
 }

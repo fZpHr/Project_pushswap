@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbelle <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hbelle <hbelle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 19:32:34 by hbelle            #+#    #+#             */
-/*   Updated: 2023/11/07 11:33:52 by hbelle           ###   ########.fr       */
+/*   Updated: 2023/12/26 12:26:18 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+long int	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	sign;
-	int	res;
+	int			i;
+	long int	sign;
+	long int	res;
 
 	i = 0;
 	res = 0;

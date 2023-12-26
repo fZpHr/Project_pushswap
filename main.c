@@ -6,7 +6,7 @@
 /*   By: hbelle <hbelle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 10:53:05 by hbelle            #+#    #+#             */
-/*   Updated: 2023/12/22 18:57:12 by hbelle           ###   ########.fr       */
+/*   Updated: 2023/12/26 15:01:15 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,19 @@ int	main(int argc, char **argv)
 		{
 			create_array_a_b(&s);
 			s.i = 0;
+			rule_pb(&s);
+			while (s.b[s.i])
+			{
+				ft_printf("b[%d]: %d\n", s.i, s.b[s.i]);
+				s.i++;
+			}
+			s.i = 0;
 			while (s.a[s.i])
 			{
 				ft_printf("a[%d]: %d\n", s.i, s.a[s.i]);
 				s.i++;
 			}
+			free_end(&s);
 			/*if (ft_check_double(&s, s.a) == 0)
 			{
 				if (ft_check_sort(&s, s.a) == 0)
