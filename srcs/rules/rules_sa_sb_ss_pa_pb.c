@@ -6,7 +6,7 @@
 /*   By: hbelle <hbelle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:00:18 by hbelle            #+#    #+#             */
-/*   Updated: 2023/12/26 15:03:17 by hbelle           ###   ########.fr       */
+/*   Updated: 2023/12/29 18:34:46 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,20 @@ void	rule_ss(t_swap *s)
 
 void	rule_pa(t_swap *s)
 {
-	if (s->b != NULL)
+	if (s->b[0] != 2147483648)
 	{
 		s->a = ft_add(s, s->a);
 		s->a[0] = s->b[0];
-		s->a = ft_clear_add(s, s->b);
+		s->b = ft_clear_add(s, s->b);
 	}
 }
 
 void	rule_pb(t_swap *s)
 {
-	if (s->a != NULL)
+	if (s->a[0] != 2147483648)
 	{
 		s->b = ft_add(s, s->b);
 		s->b[0] = s->a[0];
 		s->a = ft_clear_add(s, s->a);
 	}
 }
-

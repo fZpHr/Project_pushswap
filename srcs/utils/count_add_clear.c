@@ -1,53 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   count.c                                            :+:      :+:    :+:   */
+/*   count_add_clear.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbelle <hbelle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:40:54 by hbelle            #+#    #+#             */
-/*   Updated: 2023/12/26 15:01:01 by hbelle           ###   ########.fr       */
+/*   Updated: 2023/12/29 18:22:15 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_push_swap.h"
 
-int	ft_count(int *a)
+int	ft_count(long int *a)
 {
 	int	i;
 
 	i = 0;
-	while (a[i])
+	while (a[i] != 2147483648)
 		i++;
 	return (i);
 }
 
-int	*ft_add(t_swap *s, int *x)
+long int	*ft_add(t_swap *s, long int *x)
 {
-	s->i = 0;
+	int i;
+
+	i = 0;
+	s->l = ft_count(x);
 	s->tmp_array = x;
-	if (x != NULL)
-		free(x);
-	x = (int *)malloc(sizeof(int) * (ft_count(s->tmp_array) + 1));
-	while (s->tmp_array[s->i])
+	x = (long int *)malloc(sizeof(long int) * (s->l + 2));
+	while (i < s->l + 1)
 	{
-		x[s->i + 1] = s->tmp_array[s->i];
-		s->i++;
+		x[i + 1] = s->tmp_array[i];
+		i++;
 	}
+	free(s->tmp_array);
 	return (x);
 }
 
-int	*ft_clear_add(t_swap *s, int *x)
+long int	*ft_clear_add(t_swap *s, long int *x)
 {
-	s->i = 0;
+	int i;
+	
+	i = 0;
+	s->l = ft_count(x);
 	s->tmp_array = x;
-	if (x != NULL)
-		free(x);
-	x = (int *)malloc(sizeof(int) * (ft_count(s->tmp_array) - 1));
-	while (s->tmp_array[s->i])
+	x = (long int *)malloc(sizeof(long int) * (s->l));
+	while (i < s->l)
 	{
-		x[s->i] = s->tmp_array[s->i + 1];
-		s->i++;
+		x[i] = s->tmp_array[i + 1];
+		i++;
 	}
+	free(s->tmp_array);
 	return (x);
 }

@@ -6,7 +6,7 @@
 /*   By: hbelle <hbelle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 10:53:05 by hbelle            #+#    #+#             */
-/*   Updated: 2023/12/26 15:01:15 by hbelle           ###   ########.fr       */
+/*   Updated: 2023/12/29 18:42:05 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,36 +25,35 @@ int	main(int argc, char **argv)
 	init_variables(&s, argc, argv);
 	if (s.ac > 1)
 	{
-		if (check_input(&s, s.av) == 0)
+		if (s.ac == 2)
 		{
-			create_array_a_b(&s);
+			s.av = ft_split(s.av[1], ' ');
+			if (check_input(&s, s.av) == 1)
+				exit (0);
 			s.i = 0;
-			rule_pb(&s);
-			while (s.b[s.i])
-			{
-				ft_printf("b[%d]: %d\n", s.i, s.b[s.i]);
-				s.i++;
-			}
-			s.i = 0;
-			while (s.a[s.i])
-			{
-				ft_printf("a[%d]: %d\n", s.i, s.a[s.i]);
-				s.i++;
-			}
-			free_end(&s);
-			/*if (ft_check_double(&s, s.a) == 0)
-			{
-				if (ft_check_sort(&s, s.a) == 0)
-				{
-					ft_printf("OK\n");
-					return (0);
-				}
-				else
-					ft_printf("KO\n");
-			}
-			else
-				ft_printf("KO\n");*/
+		}
+		else
+		{
+			if (check_input(&s, s.av) == 1)
+				exit (0);
+			s.i = 1;
+		}
+		create_array_a_b(&s);
+		if (ft_count(s.a) == 2 && s.a[0] > s.a[1])
+		{
+			ft_printf("sa\n");
+			rule_sa(&s);
+		}
+		else if (ft_count(s.a) == 3)
+			sorts_3(&s);
+		else if (ft_count(s.a) > 3)
+			sorts(&s);
+		s.i = 0;
+		while (s.a[s.i] != 2147483648)
+		{
+			ft_printf("a[%d]: %d\n", s.i, s.a[s.i]);
+			s.i++;
 		}
 	}
-	return (0);
+return (0);
 }

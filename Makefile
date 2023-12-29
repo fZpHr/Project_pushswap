@@ -6,7 +6,7 @@
 #    By: hbelle <hbelle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 17:52:23 by hbelle            #+#    #+#              #
-#    Updated: 2023/12/26 15:04:35 by hbelle           ###   ########.fr        #
+#    Updated: 2023/12/29 17:35:40 by hbelle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,16 @@ NAME	=	push_swap
 SRCS	=	main.c \
 	srcs/parse/check_input.c \
 	srcs/data/create_array.c \
-	srcs/utils/count.c \
 	srcs/utils/end.c \
 	srcs/rules/rules_ra_rb_rr.c \
 	srcs/rules/rules_rra_rrb_rrr.c \
 	srcs/rules/rules_sa_sb_ss_pa_pb.c \
+	srcs/utils/sorts.c \
+	srcs/utils/count_add_clear.c \
+	srcs/utils/sorts_cost.c \
+	srcs/rules/rules_cost/rules_sa_sb_ss_pa_pb_cost.c \
+	srcs/rules/rules_cost/rules_rra_rrb_rrr_cost.c \
+	srcs/rules/rules_cost/rules_ra_rb_rr_cost.c \
 	
 OBJ_DIR = .o
 OBJTS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
@@ -29,7 +34,7 @@ RM	=	rm -f
 HEADER =	-I includes
 LIBS =	-Llibft/ -lft
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(@D)
