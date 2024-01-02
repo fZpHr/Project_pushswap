@@ -6,7 +6,7 @@
 #    By: hbelle <hbelle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 17:52:23 by hbelle            #+#    #+#              #
-#    Updated: 2023/12/29 17:35:40 by hbelle           ###   ########.fr        #
+#    Updated: 2024/01/02 14:54:30 by hbelle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,12 @@ SRCS	=	main.c \
 	srcs/rules/rules_cost/rules_sa_sb_ss_pa_pb_cost.c \
 	srcs/rules/rules_cost/rules_rra_rrb_rrr_cost.c \
 	srcs/rules/rules_cost/rules_ra_rb_rr_cost.c \
-	
+	srcs/utils/process_sorts.c \
+	srcs/utils/process_sorts_cost.c \
+	srcs/utils/utils_sorts.c \
+	srcs/utils/sorts_options.c \
+	srcs/utils/sorts_options_cost.c \
+
 OBJ_DIR = .o
 OBJTS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 LIBFT	=	libft/libft.a
@@ -34,7 +39,7 @@ RM	=	rm -f
 HEADER =	-I includes
 LIBS =	-Llibft/ -lft
 
-CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(@D)

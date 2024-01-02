@@ -6,7 +6,7 @@
 /*   By: hbelle <hbelle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:42:07 by hbelle            #+#    #+#             */
-/*   Updated: 2023/12/27 15:10:57 by hbelle           ###   ########.fr       */
+/*   Updated: 2024/01/02 15:50:32 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ int	ft_check_duplicate(t_swap *s, char *cur)
 	i = 0;
 	while (s->av[i])
 	{
+		if (s->av[i][0] == 45)
+			if (s->av[i][1] == 48)
+				s->check_error++;
 		if (ft_strcmp(cur, s->av[i]) == 0)
 			s->check_error++;
 		i++;
@@ -48,7 +51,6 @@ int	ft_check_duplicate(t_swap *s, char *cur)
 
 int	check_input(t_swap *s, char **input)
 {
-	s->i = 1;
 	s->check_error = 0;
 	while (input[s->i])
 	{

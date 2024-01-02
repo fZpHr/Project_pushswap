@@ -6,7 +6,7 @@
 /*   By: hbelle <hbelle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:39:53 by hbelle            #+#    #+#             */
-/*   Updated: 2023/12/29 18:23:53 by hbelle           ###   ########.fr       */
+/*   Updated: 2024/01/02 14:46:51 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	rule_rra_cost(t_swap *s)
 {
-	int i;
+	int	i;
 
-	i = ft_count(s->tmp_array_a) - 1;
+	i = s->current_count_a - 1;
 	s->tmp = s->tmp_array_a[i];
 	while (i > 0)
 	{
@@ -28,9 +28,9 @@ void	rule_rra_cost(t_swap *s)
 
 void	rule_rrb_cost(t_swap *s)
 {
-	int i;
-	
-	i = ft_count(s->tmp_array_b) - 1;
+	int	i;
+
+	i = s->current_count_b - 1;
 	s->tmp = s->tmp_array_b[i];
 	while (i > 0)
 	{

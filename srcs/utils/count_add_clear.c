@@ -6,7 +6,7 @@
 /*   By: hbelle <hbelle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:40:54 by hbelle            #+#    #+#             */
-/*   Updated: 2023/12/29 18:22:15 by hbelle           ###   ########.fr       */
+/*   Updated: 2024/01/02 14:51:40 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_count(long int *a)
 
 long int	*ft_add(t_swap *s, long int *x)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	s->l = ft_count(x);
@@ -41,8 +41,8 @@ long int	*ft_add(t_swap *s, long int *x)
 
 long int	*ft_clear_add(t_swap *s, long int *x)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	s->l = ft_count(x);
 	s->tmp_array = x;

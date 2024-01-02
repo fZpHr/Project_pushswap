@@ -6,7 +6,7 @@
 /*   By: hbelle <hbelle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:00:18 by hbelle            #+#    #+#             */
-/*   Updated: 2023/12/29 17:25:50 by hbelle           ###   ########.fr       */
+/*   Updated: 2024/01/02 14:46:47 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,3 @@ void	rule_pb_cost(t_swap *s)
 		s->tmp_array_a = ft_clear_add(s, s->tmp_array_a);
 	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: hbelle <hbelle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:39:53 by hbelle            #+#    #+#             */
-/*   Updated: 2023/12/29 18:22:58 by hbelle           ###   ########.fr       */
+/*   Updated: 2024/01/02 14:46:23 by hbelle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	rule_rra(t_swap *s)
 {
-	int i;
+	int	i;
 
-	i = 0;
-	i = ft_count(s->a) - 1;
+	i = s->current_count_a - 1;
 	s->tmp = s->a[i];
 	while (i > 0)
 	{
@@ -25,14 +24,15 @@ void	rule_rra(t_swap *s)
 		i--;
 	}
 	s->a[0] = s->tmp;
+	if (s->print == 0)
+		ft_printf("rra\n");
 }
 
 void	rule_rrb(t_swap *s)
 {
-	int i;
+	int	i;
 
-	i = 0;
-	i = ft_count(s->b) - 1;
+	i = s->current_count_b - 1;
 	s->tmp = s->b[i];
 	while (i > 0)
 	{
@@ -40,10 +40,15 @@ void	rule_rrb(t_swap *s)
 		i--;
 	}
 	s->b[0] = s->tmp;
+	if (s->print == 0)
+		ft_printf("rrb\n");
 }
 
 void	rule_rrr(t_swap *s)
 {
+	s->print = 1;
 	rule_rrb(s);
 	rule_rra(s);
+	s->print = 0;
+	ft_printf("rrr\n");
 }
